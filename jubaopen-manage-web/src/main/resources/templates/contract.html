@@ -1,0 +1,501 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:formatter="http://www.w3.org/1999/xhtml">
+<body>
+<title>合同列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="ICPlatform/css/model.css" type="text/css">
+<link rel="stylesheet" href="ICPlatform/css/model_info.css" type="text/css">
+<LINK rel=stylesheet type=text/css href="smp_files/zTreeStyle.css">
+<link rel="stylesheet"  href="ICPlatform/plugins/easyUI/themes/default/easyui.css" type="text/css">
+<link rel="stylesheet" href="ICPlatform/plugins/easyUI/themes/icon.css" type="text/css">
+
+<script src="ICPlatform/js/jquery-1.7.1.js" type="text/javascript"></script>
+<script src="ICPlatform/js/easytooltip.js" type="text/javascript"></script>
+<script src="ICPlatform/js/jquery.form.js" type="text/javascript"></script>
+<script src="ICPlatform/plugins/easyUI/jquery.easyui.min.js" type="text/javascript"></script>
+<SCRIPT type=text/javascript src="smp_files/easyui-lang-zh_CN.js"></SCRIPT>
+
+
+<style type="text/css">
+	.td_1{font-size:12px;}
+
+</style>
+<style type="text/css">
+	td {
+		text-align: center;
+
+	}
+</style>
+<script>
+
+    $(function(){
+        var fromDate;
+        loadInfo();
+        var r = $("#tt").datagrid("getPager");
+        r.pagination({
+            onChangePageSize: function (pageSize) {
+                r.pagination('refresh')
+            },
+            onSelectPage: function (pageNumber, pageSize) {
+                searchInfo();
+            }
+			
+		})
+
+
+
+        $('#idNumber').validatebox({
+            required: true,
+            validType: 'idcard'
+        });
+
+        //客户姓名和证件号验证
+        $.extend($.fn.validatebox.defaults.rules, {
+            idcard : {
+                validator : function(value) {
+                    return /^\d{15}(\d{2}[A-Za-z0-9])?$/i.test(value);
+                },
+                message : '证件号码格式不正确'
+            },
+            checkDateTime: {
+                validator : function(value, param) {
+                    fromDate = $(param[0]).val();
+                    if (fromDate!=""){
+                        if (fromDate.replace(/-/g,"") > value.replace(/-/g,"")){
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    } else {
+                        return true;
+                    }
+                },
+                message : '开始日期应小于结束日期'
+            }
+        });
+
+        var sValue = $("#loanKind").val();
+        $('#loanKindName').combobox({
+            onBeforeLoad: function(param){
+                if (sValue != ""){
+                    $('#loanKindName').combobox('select', [sValue]);
+                }
+            },
+            onSelect: function(rec){
+                $("#loanKind").val(rec.value);
+            }
+        });
+    });
+
+
+    function getSearchParam() {
+        var param = {};
+        param['clientName'] = $('#clientName').val();
+        param['loanContractNum'] = $('#loanContractNum').val();
+        param['identityNum'] = $('#identityNum').val();
+        param['city'] = $('#city').val();
+        param['deptName'] = $('#deptName').val();
+        param['signDateStart'] = $('#signDateStart').datebox('getValue');
+        param['signDateEnd'] = $('#signDateEnd').datebox('getValue');
+        param['repaymentDateStart'] = $('#repaymentDateStart').datebox('getValue');
+        param['repaymentDateEnd'] = $('#repaymentDateEnd').datebox('getValue');
+        param['contractType'] = $('#contractType').combobox('getValue')==0?'':$('#contractType').combobox('getValue');
+        param['businessType'] = $('#businessType').combobox('getValue')==0?'':$('#businessType').combobox('getValue');
+        //param['creditType'] = $('#creditType').combobox('getValue')==0?'':$('#creditType').combobox('getValue');
+        param['trustInstitution'] = $('#trustInstitution').combobox('getValue')==0?'':$('#trustInstitution').combobox('getValue');
+        param['trustProducts'] = $('#trustProducts').combobox('getValue')==0?'':$('#trustProducts').combobox('getValue');
+        param['trustPlan'] = $('#trustPlan').combobox('getValue')==0?'':$('#trustPlan').combobox('getValue');
+        param['typeContractChange'] = $('#typeContractChange').combobox('getValue')==0?'':$('#typeContractChange').combobox('getValue');
+        return param;
+    }
+
+    function searchInfo(){
+        var param = loadInfo();
+       // $("#tt").datagrid("load");
+    }
+
+
+    //重置
+    function clearForm(){
+        $('#clientName').val("");
+        $('#idNumber').val("");
+        $('#selectedOffice').datebox('setValue', '');
+        $('#productsTypeName').datebox('setValue', '');
+        $('#productsTypeName').combobox('select', "");
+    }
+
+    function loadInfo() {
+
+        $('#tt').datagrid({
+            url: 'getResult',
+            method: 'get',
+            queryParams:getSearchParam(),
+            pagination: true,//是否使用分页功能
+            singleSelect:true,//每次只能选中1行
+            //fit:true,
+            loadMsg:'加载中...',
+            pageList: [1, 2, 3, 4, 5], //设置每页记录条数的列表
+            pageSize: 10, //初始化页面尺寸（默认分页大小）
+            pageNumber: 1, //初始化页面（默认显示第一页）
+            beforePageText: '第', //页数文本框前显示的汉字
+            afterPageText: '页 共 {pages} 页',
+            displayMsg: '第{from}到{to}条，共{total}条',
+            columns:[[
+                { field: 'borrowerId', title: '借款人id',hidden:'true', editor: 'text' },
+                { field:'_operate',title:'操作',width:180,align:'center',formatter:formatOper},
+                { field: 'loanContractNum', title: '合同编号', editor: 'text',width:150 },
+                { field: 'contractType', title: '合同状态', editor: 'text',width:150 ,
+                    formatter: function(value,row,index){
+                        if (row.contractType=='-1'){return '合同废除';} else if(row.contractType=='101')
+                        {return '未放款';}else if(row.contractType=='102'){return '还款中';
+                        }else if(row.contractType=='103'){return '逾期';}else if(row.contractType=='104')
+                        {return '正常还清';}else if(row.contractType=='105'){return '合同终止';}else if(row.contractType=='106')
+                        {return '合同销毁';}else if(row.contractType=='107'){return '减免结清';}else if(row.contractType=='108')
+                        {return '特殊减免结清';}else if(row.contractType=='109'){return '提前结清';}else {return '放款退回结清';}
+                    }
+                },
+                { field: 'clientName', title: '客户姓名', editor: 'text' ,width:150 },
+                { field: 'identityType', title: '证件类型', editor: 'text',width:150  },
+                { field: 'identityNum', title: '证件号', editor: 'text',width:150  },
+                { field: 'creditType', title: '贷款品种', editor: 'text',width:150 ,//1为信用，2为担保，3为抵押，4为其他',
+                    formatter: function(value,row,index){
+                        if (row.creditType=='1'){return '信用';} else if(row.creditType=='2'){return '担保';
+                        }else if(row.creditType=='3'){return '抵押';}else {return '其他';}
+                    }
+                },
+                { field: 'businessType', title: '业务模式',width:150 , editor: 'text',
+                    formatter: function(value,row,index){
+                        if (row.businessType=='101'){return '转债券';} else if(row.businessType=='102'){return '火凤凰';
+                        }else if(row.businessType=='103'){return '信托';}else if(row.businessType=='104'){return '互联网';
+                        }else if(row.businessType=='105'){return '融资租赁';}else if(row.businessType=='106'){return '房贷一对一';}
+                    }
+                },
+                { field: 'trustInstitution', title: '信托机构',width:150 , editor: 'text',
+                    formatter: function(value,row,index){
+                        if (row.trustInstitution=='101'){return '中航信托';} else if(row.trustInstitution=='102'){return '中澳华宜';}
+                    }
+                },
+                { field: 'trustProducts', title: '信托产品系列',width:150 , editor: 'text',
+                    formatter: function(value,row,index){
+                        if (row.trustProducts=='101'){return '天宜';} else if(row.trustProducts=='102'){return '天驰';
+                        } else if(row.trustProducts=='103'){return '天惠';}
+                    }
+                },
+                { field: 'trustPlan', title: '信托计划',width:150 , editor: 'text',
+                    formatter: function(value,row,index){
+                        if (row.trustPlan=='101'){return '一号';} else if(row.trustPlan=='102'){return '二号';
+                        }else if(row.trustPlan=='103'){return '三号';}else if(row.trustPlan=='104'){return '四号';
+                        }else if(row.trustPlan=='105'){return '五号';}else if(row.trustPlan=='106'){return '六号';}
+                    }
+                },
+                { field: 'city', title: '城市地区',width:150 , editor: 'text' },
+                { field: 'deptName', title: '营业部',width:150 , editor: 'text' },
+                { field: 'isExpedited', title: '是否加急',width:150 , editor: 'text',
+                    formatter: function(value,row,index){
+                        if (row.isExpedited=='Y'||row.isExpedited=='y'){return '是';
+                        } else {return '否';}
+                    }
+                },
+                { field: 'signType', title: '签约方式',width:150 , editor: 'text',
+                    formatter: function(value,row,index){
+                        if (row.signType=='1'){return '纸质';} else if(row.signType=='2'){return '电子签约';}
+                    }
+                },
+                { field: 'signDate', title: '合同签订时间',width:150 , editor: 'text' },
+                { field: 'typeContractChange', title: '合同变更类型',width:150 , editor: 'text',
+                    formatter: function(value,row,index){
+                        if (row.typeContractChange=='101'){return '转产品';
+                        } else if(row.typeContractChange=='102'){return '展期';}
+                    }
+                },
+                { field: 'amountContractChange', title: '合同变更金额',width:150 , editor: 'text' },
+                { field: 'loanInstalments', title: '分期数',width:150 , editor: 'text' },
+                { field: 'isRecycleLoad', title: '是否循环贷',width:150 , editor: 'text',
+                    formatter: function(value,row,index){
+                        if (row.isRecycleLoad=='Y'||row.isRecycleLoad=='y'){return '是';
+                        } else {return '否';}
+                    }
+                },
+                { field: 'recycleLoanCnt', title: '循环贷次数',width:150 , editor: 'text' },
+                { field: 'startDate', title: '还款起始日期',width:150 , editor: 'text' },
+
+                { field: 'endDate', title: '还款终止日期',width:150 , editor: 'text' },
+                { field: 'settleDate', title: '合同结清日期',width:150 , editor: 'text' },
+                { field: 'loanAmount', title: '借款金额',width:150 , editor: 'text' },
+                { field: 'repayAccountBankName', title: '还款银行',width:150 , editor: 'text' },
+                { field: 'repayAccount', title: '还款银行账号',width:150 , editor: 'text' },
+
+                { field: 'preFee', title: '前期费用总额',width:150 , editor: 'text' },
+                { field: 'loanType', title: '放款模式',width:150 , editor: 'text' },
+                { field: 'loanTime', title: '放款时间',width:150 , editor: 'text' },
+                { field: 'putAmount', title: '放款金额',width:150 , editor: 'text' },
+            ]]
+        });
+    }
+
+    function formatOper(val,row,index){
+        var loanContractNum = row.loanContractNum;
+        var borrowerId = row.borrowerId;
+        //alert(borrowerId);
+        return "<a href='common/look.html?loanContractNum="+loanContractNum+"&borrowerId="+borrowerId+"'"+"  onClick='window.open(this.href,    '_self',    'scrollbars=yes') ;return  false'>查看还款情况</a>"+'&nbsp;'+
+            "<a href='common/alter.html?loanContractNum="+loanContractNum+"&borrowerId="+borrowerId+"'"+"  onClick='window.open(this.href,    '_self',    'scrollbars=yes');return  false'>修改还款情况</a>";
+    }
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('table.datagrid-htable').find('.datagrid-cell').css("text-align", 'center');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id23').css("text-align", 'right');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id30').css("text-align", 'right');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id34').css("text-align", 'right');
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('table.datagrid-htable').find('.datagrid-cell').css("text-align", 'center');
+        $('table.datagrid-btable').find('.datagrid-cell').css("text-align", 'center');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id23').css("text-align", 'right');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id27').css("text-align", 'right');
+        $('table.datagrid-btable').find('.datagrid-cell-c1-item_id30').css("text-align", 'right');
+
+        $('#dd').combotree('loadData', [{ id: 1, text: '贷款品种', children: [
+            { id: 11, text: '新薪贷' },
+            { id: 12, text: '学信通' },
+            { id: 13, text: '精英贷' },
+            { id: 14, text: '助学贷' },
+            { id: 15, text: '助业贷' },
+            { id: 16, text: '助业宜楼贷' },
+            { id: 17, text: '新薪宜楼贷' },
+            { id: 18, text: '学历贷' },
+            { id: 19, text: '宜商贷' },
+            { id: 20, text: '宜车贷' },
+            { id: 21, text: '小企业贷' },
+            { id: 22, text: '房贷' },
+            { id: 23, text: '慧聪（高级）' },
+            { id: 24, text: '慧聪（三年）' },
+            { id: 25, text: '慧聪（普通）' }
+        ] }]);
+
+
+
+
+
+
+    });
+</script>
+
+<div>&nbsp;</div>
+<form id="searchForm" method="post">
+	<table style="height: auto; width: 100%;" >
+		<tbody>
+		<tr>
+
+
+			<td width="10%" class="td_1">
+				合同编号：
+			</td>
+			<td width="20%">
+				<input  id="loanContractNum" name="loanContractNum" style="width:188px;" value="">
+				<input type="hidden" id="pPage1" name="pageSize" value="">
+				<input type="hidden" id="pSize1" name="pageSize" value="">
+				<input type="hidden" id="sysId1" name="sysId" value="11">
+			</td>
+
+			<td width="10%" class="td_1">
+				客户姓名：
+			</td>
+			<td width="20%">
+				<input  id="clientName" name="clientName" style="width:188px;" value="">
+				<input type="hidden" id="pPage2" name="pageSize" value="">
+				<input type="hidden" id="pSize2" name="pageSize" value="">
+				<input type="hidden" id="sysId2" name="sysId" value="11">
+			</td>
+
+			<td width="10%" class="td_1">
+				证件号：
+			</td>
+			<td width="20%">
+				<input  id="identityNum" name="identityNum" style="width:188px;" value="">
+				<input type="hidden" id="pPage3" name="pageSize" value="">
+				<input type="hidden" id="pSize3" name="pageSize" value="">
+				<input type="hidden" id="sysId3" name="sysId" value="11">
+			</td>
+
+		</tr>
+
+		<tr>
+
+			<td width="8%" class="td_1">贷款品种： </td>
+			<td width="26%">
+				<input type="hidden" id="creditType1" name="creditType1" value="172,58,11,15,9,104,195,165,193,53,33,1,54,260,11011192,47,113,6,273,22,57,134,129,271,127,100,197,85,28,301,62,175,155,101,223,250,1,222,200,249,204,135,163,159,272,123,42,95,23,144,20,75,32,207,224,142,120,3,11011279,11009482,137,203,270,25,6,151,181,116,247,72,262,184,110,66,186,138,167,130,221,12,269,189,274,21,152,251,88,114,76,201,202,31,178,26,98,69,241,230,106,162,265,43,107,68,65,121,206,99,73,141,191,63,17,196,78,133,157,148,231,239,299,176,160,131,70,161,154,51,111,168,214,71,11011325,11110829,96,248,41,118,109,153,124,194,303,102,268,11011192,94,64,29,60,36,97,6,240,147,24,145,90,87,238,132,94,74,192,3,302,11011279,112,188,243,185,39,55,16,187,267,23,103,177,190,139,128,275,115,237,261,146,136,44,217,166,182,173,149,228,122,150,59,10,263,67,93,183,44,46,14,125,170,40,205,301,50,23,300,212,174,126,77,276,229,79,164,156,13,158,35,89,86,172">
+				<span class="searchbox" style="width:189px;">
+								<input class="searchbox-text" type="text" id="creditType" name="creditType" style="width:169px;" value="宜信公司，新薪贷......" readonly="readonly" data-options="required:'true'">
+								<span  class="searchbox-button" onClick="deptree('open');"></span>
+								</span>
+			</td>
+
+			<td width="10%" class="td_1">城市地区：</td>
+			<td width="20%">
+				<input  id="city" name="city" style="width:188px;" value="">
+				<input type="hidden" id="pPage4" name="pageSize" value="">
+				<input type="hidden" id="pSize4" name="pageSize" value="">
+				<input type="hidden" id="sysId4" name="sysId" value="11">
+			</td>
+
+
+			<td width="10%" class="td_1">营业部：</td>
+			<td width="20%">
+				<input  id="deptName" name="deptName" style="width:188px;" value="">
+				<input type="hidden" id="pPage" name="pageSize" value="">
+				<input type="hidden" id="pSize" name="pageSize" value="">
+				<input type="hidden" id="sysId" name="sysId" value="11">
+			</td>
+
+
+		</tr>
+
+
+
+		<tr>
+
+
+
+			<td width="10%" class="td_1">合同状态：</td>
+			<td width="20%">
+				<select id="contractType" class="easyui-combobox combobox-f combo-f"  style="width: 195px; display: none;" editable="fales" name="contractType">
+					<option value="0">请选择</option>
+					<option value="1">合同废止</option>
+					<option value="2">未放款</option>
+					<option value="3">还款中</option>
+					<option value="4">逾期</option>
+					<option value="5">正常结清</option>
+					<option value="6">合同终止</option>
+					<option value="7">合同核销</option>
+					<option value="8">减免结清</option>
+					<option value="9">特殊减免结清</option>
+					<option value="10">提前结清</option>
+					<option value="11">放款退回结清</option>
+
+				</select>
+			</td>
+
+			<td width="10%" class="td_1">合同签订时间： </td>
+			<td width="20%">
+				<input type="text" id="signDateStart" style="width: 80px; display: none;" class="easyui-datetimebox" value="" comboname="signDateStart">
+				-
+				<input type="text" id="signDateEnd" style="width: 80px; display: none;" class="easyui-datetimebox" value="" data-options="validType:'checkDateTime[\'#searchForm input[name=repaymentStart]\']'" comboname="signDateEnd">
+			</td>
+
+			<td width="10%" class="td_1">放款时间： </td>
+			<td width="20%">
+				<input type="text" id="repaymentDateStart" style="width: 80px; display: none;" class="easyui-datetimebox" value="" comboname="repaymentDateStart">
+				-
+				<input type="text" id="repaymentDateEnd" style="width: 80px; display: none;" class="easyui-datetimebox" value="" data-options="validType:'checkDateTime[\'#searchForm input[name=repaymentStart]\']'" comboname="repaymentDateEnd">
+			</td>
+
+
+		</tr>
+
+		<tr>
+
+
+			<td width="10%" class="td_1">信托机构：</td>
+			<td width="20%">
+				<select class="easyui-combobox combobox-f combo-f" id="trustInstitution" style="width: 195px; display: none;" editable="fales" name="trustInstitution">
+					<option value="">请选择</option>
+					<option  th:each="trustInstitutionInfo:${attributeMap.trustInstitutionInfos}" th:value="${trustInstitutionInfo.trustInstitutionCode}"
+							 th:text="${trustInstitutionInfo.trustInstitutionName}">中航信托</option>
+				</select>
+			</td>
+
+
+			<td width="10%" class="td_1">信托产品系列：</td>
+			<td width="20%">
+				<select class="easyui-combobox combobox-f combo-f" id="trustProducts" style="width: 195px; display: none;" editable="fales" name="trustProducts">
+					<option value="">请选择</option>
+					<option  th:each="trustProductsInfo:${attributeMap.trustProductsInfos}" th:value="${trustProductsInfo.trustProductsCode}"
+							 th:text="${trustProductsInfo.trustProductsName}">天宜</option>
+
+
+				</select>
+			</td>
+
+			<td width="10%" class="td_1">信托计划：</td>
+			<td width="20%">
+				<select id="trustPlan" class="easyui-combobox combobox-f combo-f"  style="width: 195px; display: none;" editable="fales" name="trustPlan">
+					<option value="">请选择</option>
+					<option  th:each="trustPlanInfo:${attributeMap.trustPlanInfos}" th:value="${trustPlanInfo.trustPlanCode}"
+							 th:text="${trustPlanInfo.trustPlanName}">1号</option>
+
+
+				</select>
+			</td>
+
+		</tr>
+
+		<tr>
+
+
+			<td width="8%" class="td_1">业务模式： </td>
+			<td width="26%">
+				<select id="businessType" class="easyui-combobox combobox-f combo-f" name="businessType"  style="width: 190px; display: none;" editable="fales" comboname="productsTypeName">
+
+					<option value="">请选择</option>
+					<option  th:each="businessTypeInfo:${attributeMap.businessTypeInfos}" th:value="${businessTypeInfo.businessTypeCode}"
+							 th:text="${businessTypeInfo.businessTypeName}">信托</option>
+				</select>
+
+			</td>
+
+			<td width="8%" class="td_1">合同变更类型： </td>
+			<td width="26%">
+				<select  class="easyui-combobox combobox-f combo-f" name="typeContractChange" id="typeContractChange" style="width: 190px; display: none;" editable="fales" comboname="productsTypeName">
+
+					<option value="" >请选择</option>
+					<option  th:each="typeContractChangeInfo:${attributeMap.typeContractChangeInfos}" th:value="${typeContractChangeInfo.typeContractChangeCode}"
+							 th:text="${typeContractChangeInfo.typeContractChangeName}">转产品</option>
+
+				</select>
+
+			</td>
+
+		</tr>
+
+
+		<tr>
+			<td width="10%" class="td_1"></td>
+			<td width="20%">
+			<td width="10%" class="td_1"></td>
+			<td width="20%">
+			<td width="10%" class="td_1"></td>
+			<td width="20%">
+
+				<a href="javascript:void(0)" class="easyui-linkbutton l-btn" onClick="searchInfo();" group="" id="1">查询</a>
+				&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton l-btn" onClick="clearForm()" group="" id="2">重置</a>
+
+			</td>
+
+			</br>
+		</tr>
+
+		</tbody>
+	</table>
+</form>
+
+<div>&nbsp;</div>
+<div class="panel datagrid" style="width: auto;">
+	<div class="panel-header" style="width: auto;"><div class="panel-title">合同列表</div><div class="panel-tool"></div></div>
+
+	<table id="tt" class="easyui-datagrid" style="width:auto;height:250px"
+		    >
+		<thead>
+
+		</thead>
+		<tbody>
+
+	</table>
+	</div>
+</body>
+</html>
