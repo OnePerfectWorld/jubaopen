@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.atguigu.jubaopen.bean.NplmRepaymentRecord">
+        <table name="NPLM_repayment_record" schema="jubaopen" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="ID"/>
+            </id>
+            <basic name="businessRequestId">
+                <column name="BUSINESS_REQUEST_ID"/>
+            </basic>
+            <basic name="loanContractNum">
+                <column name="LOAN_CONTRACT_NUM"/>
+            </basic>
+            <basic name="repaymentDate">
+                <column name="REPAYMENT_DATE"/>
+            </basic>
+            <basic name="overdueDays">
+                <column name="OVERDUE_DAYS"/>
+            </basic>
+            <basic name="overdueAmount">
+                <column name="OVERDUE_AMOUNT"/>
+            </basic>
+            <basic name="repaymentAmount">
+                <column name="REPAYMENT_AMOUNT"/>
+            </basic>
+            <basic name="successAmount">
+                <column name="SUCCESS_AMOUNT"/>
+            </basic>
+            <basic name="status">
+                <column name="STATUS"/>
+            </basic>
+            <basic name="remark">
+                <column name="REMARK"/>
+            </basic>
+            <basic name="specialCode">
+                <column name="SPECIAL_CODE"/>
+            </basic>
+            <basic name="sort">
+                <column name="SORT"/>
+            </basic>
+            <basic name="dataCreateType">
+                <column name="data_create_type"/>
+            </basic>
+            <basic name="reserveTime">
+                <column name="RESERVE_TIME"/>
+            </basic>
+            <basic name="creator">
+                <column name="CREATOR"/>
+            </basic>
+            <basic name="createTime">
+                <column name="CREATE_TIME"/>
+            </basic>
+            <basic name="updater">
+                <column name="UPDATER"/>
+            </basic>
+            <basic name="updateTime">
+                <column name="UPDATE_TIME"/>
+            </basic>
+            <basic name="accountName">
+                <column name="ACCOUNT_NAME"/>
+            </basic>
+            <basic name="acctIdenType">
+                <column name="ACCT_IDEN_TYPE"/>
+            </basic>
+            <basic name="acctIdenNum">
+                <column name="ACCT_IDEN_NUM"/>
+            </basic>
+            <basic name="accountNo">
+                <column name="ACCOUNT_NO"/>
+            </basic>
+            <basic name="accountType">
+                <column name="ACCOUNT_TYPE"/>
+            </basic>
+            <basic name="accountBankid">
+                <column name="ACCOUNT_BANKID"/>
+            </basic>
+            <basic name="accountBranchNo">
+                <column name="ACCOUNT_BRANCH_NO"/>
+            </basic>
+            <basic name="accountBankName">
+                <column name="ACCOUNT_BANK_NAME"/>
+            </basic>
+            <basic name="publicPrivate">
+                <column name="PUBLIC_PRIVATE"/>
+            </basic>
+            <basic name="actProvince">
+                <column name="ACT_PROVINCE"/>
+            </basic>
+            <basic name="accountCity">
+                <column name="ACCOUNT_CITY"/>
+            </basic>
+            <basic name="updateType">
+                <column name="UPDATE_TYPE"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/jubaopen-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/jubaopen-bean/pom.xml" />
+        <option value="$PROJECT_DIR$/jubaopen-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/jubaopen-common-util/pom.xml" />
+        <option value="$PROJECT_DIR$/jubaopen-web-util/pom.xml" />
+        <option value="$PROJECT_DIR$/jubaopen-service-util/pom.xml" />
+        <option value="$PROJECT_DIR$/jubaopen-manage-web/pom.xml" />
+        <option value="$PROJECT_DIR$/jubaopen-manage-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+</project>

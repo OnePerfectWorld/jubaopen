@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.atguigu.jubaopen.bean.NplmBorrowerInfo">
+        <table name="nplm_borrower_info" schema="jubaopen" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="applyClientId">
+                <column name="APPLY_CLIENT_ID"/>
+            </basic>
+            <basic name="ecifId">
+                <column name="ECIF_ID"/>
+            </basic>
+            <basic name="clientName">
+                <column name="CLIENT_NAME"/>
+            </basic>
+            <basic name="mobile">
+                <column name="MOBILE"/>
+            </basic>
+            <basic name="oldName">
+                <column name="OLD_NAME"/>
+            </basic>
+            <basic name="sex">
+                <column name="SEX"/>
+            </basic>
+            <basic name="nation">
+                <column name="NATION"/>
+            </basic>
+            <basic name="birthday">
+                <column name="BIRTHDAY"/>
+            </basic>
+            <basic name="marital">
+                <column name="MARITAL"/>
+            </basic>
+            <basic name="haveChildren">
+                <column name="HAVE_CHILDREN"/>
+            </basic>
+            <basic name="childrenCount">
+                <column name="CHILDREN_COUNT"/>
+            </basic>
+            <basic name="nationality">
+                <column name="NATIONALITY"/>
+            </basic>
+            <basic name="hProvince">
+                <column name="H_PROVINCE"/>
+            </basic>
+            <basic name="hCity">
+                <column name="H_CITY"/>
+            </basic>
+            <basic name="hDress">
+                <column name="H_DRESS"/>
+            </basic>
+            <basic name="identityType">
+                <column name="IDENTITY_TYPE"/>
+            </basic>
+            <basic name="identityNum">
+                <column name="IDENTITY_NUM"/>
+            </basic>
+            <basic name="identityValidDate">
+                <column name="IDENTITY_VALID_DATE"/>
+            </basic>
+            <basic name="haveCar">
+                <column name="HAVE_CAR"/>
+            </basic>
+            <basic name="houseExplain">
+                <column name="HOUSE_EXPLAIN"/>
+            </basic>
+            <basic name="resideExplain">
+                <column name="RESIDE_EXPLAIN"/>
+            </basic>
+            <basic name="resideYear">
+                <column name="RESIDE_YEAR"/>
+            </basic>
+            <basic name="degree">
+                <column name="DEGREE"/>
+            </basic>
+            <basic name="diploma">
+                <column name="DIPLOMA"/>
+            </basic>
+            <basic name="yearIncome">
+                <column name="YEAR_INCOME"/>
+            </basic>
+            <basic name="industry">
+                <column name="INDUSTRY"/>
+            </basic>
+            <basic name="job">
+                <column name="JOB"/>
+            </basic>
+            <basic name="company">
+                <column name="COMPANY"/>
+            </basic>
+            <basic name="companyType">
+                <column name="COMPANY_TYPE"/>
+            </basic>
+            <basic name="department">
+                <column name="DEPARTMENT"/>
+            </basic>
+            <basic name="position">
+                <column name="POSITION"/>
+            </basic>
+            <basic name="workTime">
+                <column name="WORK_TIME"/>
+            </basic>
+            <basic name="workTimeUnit">
+                <column name="WORK_TIME_UNIT"/>
+            </basic>
+            <basic name="clientArea">
+                <column name="CLIENT_AREA"/>
+            </basic>
+            <basic name="clientType">
+                <column name="CLIENT_TYPE"/>
+            </basic>
+            <basic name="fNation">
+                <column name="F_NATION"/>
+            </basic>
+            <basic name="fProvince">
+                <column name="F_PROVINCE"/>
+            </basic>
+            <basic name="fCity">
+                <column name="F_CITY"/>
+            </basic>
+            <basic name="fArea">
+                <column name="F_AREA"/>
+            </basic>
+            <basic name="fStreet">
+                <column name="F_STREET"/>
+            </basic>
+            <basic name="fZipcode">
+                <column name="F_ZIPCODE"/>
+            </basic>
+            <basic name="cNation">
+                <column name="C_NATION"/>
+            </basic>
+            <basic name="cProvince">
+                <column name="C_PROVINCE"/>
+            </basic>
+            <basic name="cCity">
+                <column name="C_CITY"/>
+            </basic>
+            <basic name="cArea">
+                <column name="C_AREA"/>
+            </basic>
+            <basic name="cStreet">
+                <column name="C_STREET"/>
+            </basic>
+            <basic name="cZipcode">
+                <column name="C_ZIPCODE"/>
+            </basic>
+            <basic name="mobile1">
+                <column name="MOBILE1"/>
+            </basic>
+            <basic name="mobile2">
+                <column name="MOBILE2"/>
+            </basic>
+            <basic name="mobile3">
+                <column name="MOBILE3"/>
+            </basic>
+            <basic name="fTel1">
+                <column name="F_TEL1"/>
+            </basic>
+            <basic name="fTel2">
+                <column name="F_TEL2"/>
+            </basic>
+            <basic name="fTel3">
+                <column name="F_TEL3"/>
+            </basic>
+            <basic name="cTel1">
+                <column name="C_TEL1"/>
+            </basic>
+            <basic name="cTel2">
+                <column name="C_TEL2"/>
+            </basic>
+            <basic name="cTel3">
+                <column name="C_TEL3"/>
+            </basic>
+            <basic name="email1">
+                <column name="EMAIL1"/>
+            </basic>
+            <basic name="email2">
+                <column name="EMAIL2"/>
+            </basic>
+            <basic name="email3">
+                <column name="EMAIL3"/>
+            </basic>
+            <basic name="creditAmount">
+                <column name="CREDIT_AMOUNT"/>
+            </basic>
+            <basic name="sociaLlSecurity">
+                <column name="SOCIALl_SECURITY"/>
+            </basic>
+            <basic name="creator">
+                <column name="CREATOR"/>
+            </basic>
+            <basic name="createTime">
+                <column name="CREATE_TIME"/>
+            </basic>
+            <basic name="updater">
+                <column name="UPDATER"/>
+            </basic>
+            <basic name="updateTime">
+                <column name="UPDATE_TIME"/>
+            </basic>
+            <basic name="updateType">
+                <column name="UPDATE_TYPE"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="NewPersistenceUnit">
+        <mapping-file>com/atguigu/jubaopen/bean/NplmOverdueContract.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/NplmLoanContract.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/NplmRepaymentDetail.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/NplmRepaymentPlan.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/NplmRepaymentRecord.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/NplmBorrowerInfo.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/NplmContractAttribute.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/BusinessTypeInfo.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/ContractTypeInfo.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/TrustInstitutionInfo.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/TrustPlanInfo.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/TrustProductsInfo.xml</mapping-file>
+        <mapping-file>com/atguigu/jubaopen/bean/TypeContractChangeInfo.xml</mapping-file>
+        <class>com.atguigu.jubaopen.bean.NplmOverdueContract</class>
+        <class>com.atguigu.jubaopen.bean.NplmLoanContract</class>
+        <class>com.atguigu.jubaopen.bean.NplmRepaymentDetail</class>
+        <class>com.atguigu.jubaopen.bean.NplmRepaymentPlan</class>
+        <class>com.atguigu.jubaopen.bean.NplmRepaymentRecord</class>
+        <class>com.atguigu.jubaopen.bean.NplmBorrowerInfo</class>
+        <class>com.atguigu.jubaopen.bean.NplmContractAttribute</class>
+        <class>com.atguigu.jubaopen.bean.BusinessTypeInfo</class>
+        <class>com.atguigu.jubaopen.bean.ContractTypeInfo</class>
+        <class>com.atguigu.jubaopen.bean.TrustInstitutionInfo</class>
+        <class>com.atguigu.jubaopen.bean.TrustPlanInfo</class>
+        <class>com.atguigu.jubaopen.bean.TrustProductsInfo</class>
+        <class>com.atguigu.jubaopen.bean.TypeContractChangeInfo</class>
+        <properties>
+            <property name="toplink.jdbc.url" value="jdbc:mysql://192.168.171.132:3306/jubaopen"/>
+            <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://192.168.171.132:3306/jubaopen"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:mysql://192.168.171.132:3306/jubaopen"/>
+            <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://192.168.171.132:3306/jubaopen"/>
+            <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
+</persistence>

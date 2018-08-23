@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.atguigu.jubaopen.bean.TypeContractChangeInfo">
+        <table name="type_contract_change_info" schema="jubaopen" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="typeContractChangeName">
+                <column name="type_contract_change_name"/>
+            </basic>
+            <basic name="typeContractChangeCode">
+                <column name="type_contract_change_code"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

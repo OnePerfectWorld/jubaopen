@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.atguigu.jubaopen.bean.NplmContractAttribute">
+        <table name="nplm_contract_attribute" schema="jubaopen" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="loanContractId">
+                <column name="loan_contract_id"/>
+            </basic>
+            <basic name="loanContractNum">
+                <column name="LOAN_CONTRACT_NUM"/>
+            </basic>
+            <basic name="businessType">
+                <column name="business_type"/>
+            </basic>
+            <basic name="isExpedited">
+                <column name="is_expedited"/>
+            </basic>
+            <basic name="signDate">
+                <column name="sign_date"/>
+            </basic>
+            <basic name="signType">
+                <column name="sign_type"/>
+            </basic>
+            <basic name="approveDate">
+                <column name="approve_date"/>
+            </basic>
+            <basic name="firstRepayDate">
+                <column name="first_repay_date"/>
+            </basic>
+            <basic name="feeFlag">
+                <column name="fee_flag"/>
+            </basic>
+            <basic name="interestFlag">
+                <column name="interest_flag"/>
+            </basic>
+            <basic name="interestType">
+                <column name="interest_type"/>
+            </basic>
+            <basic name="graceDays">
+                <column name="grace_days"/>
+            </basic>
+            <basic name="irr">
+                <column name="irr"/>
+            </basic>
+            <basic name="lnsRate">
+                <column name="lns_rate"/>
+            </basic>
+            <basic name="channelCode">
+                <column name="channel_code"/>
+            </basic>
+            <basic name="channelName">
+                <column name="channel_name"/>
+            </basic>
+            <basic name="loanOfficerId">
+                <column name="loan_officer_id"/>
+            </basic>
+            <basic name="cityId">
+                <column name="cityID"/>
+            </basic>
+            <basic name="city">
+                <column name="city"/>
+            </basic>
+            <basic name="isModify">
+                <column name="is_modify"/>
+            </basic>
+            <basic name="isSchemeModify">
+                <column name="is_scheme_modify"/>
+            </basic>
+            <basic name="recycleWay">
+                <column name="recycle_way"/>
+            </basic>
+            <basic name="isRecycleLoad">
+                <column name="is_recycle_load"/>
+            </basic>
+            <basic name="recycleLoanCnt">
+                <column name="recycle_loan_cnt"/>
+            </basic>
+            <basic name="oldContractNum">
+                <column name="old_contract_num"/>
+            </basic>
+            <basic name="settleAmount">
+                <column name="settle_amount"/>
+            </basic>
+            <basic name="newContractNum">
+                <column name="new_contract_num"/>
+            </basic>
+            <basic name="isShorten">
+                <column name="is_shorten"/>
+            </basic>
+            <basic name="isExtend">
+                <column name="is_extend"/>
+            </basic>
+            <basic name="isChangeProduce">
+                <column name="is_change_produce"/>
+            </basic>
+            <basic name="isOverdue">
+                <column name="is_overdue"/>
+            </basic>
+            <basic name="isPayAhead">
+                <column name="is_pay_ahead"/>
+            </basic>
+            <basic name="isPayPart">
+                <column name="is_pay_part"/>
+            </basic>
+            <basic name="purpose">
+                <column name="purpose"/>
+            </basic>
+            <basic name="purposeSon">
+                <column name="purpose_son"/>
+            </basic>
+            <basic name="purposeDetail">
+                <column name="purpose_detail"/>
+            </basic>
+            <basic name="isDivAccount">
+                <column name="is_div_account"/>
+            </basic>
+            <basic name="systemType">
+                <column name="system_type"/>
+            </basic>
+            <basic name="highRisk">
+                <column name="high_risk"/>
+            </basic>
+            <basic name="isBuyout">
+                <column name="is_buyout"/>
+            </basic>
+            <basic name="feeProcessType">
+                <column name="fee_process_type"/>
+            </basic>
+            <basic name="studentCorpName">
+                <column name="student_corp_name"/>
+            </basic>
+            <basic name="settleDate">
+                <column name="settle_date"/>
+            </basic>
+            <basic name="habitTime">
+                <column name="habit_time"/>
+            </basic>
+            <basic name="repayDay">
+                <column name="RepayDay"/>
+            </basic>
+            <basic name="applyId">
+                <column name="apply_Id"/>
+            </basic>
+            <basic name="oldApplyId">
+                <column name="old_Apply_Id"/>
+            </basic>
+            <basic name="deptId">
+                <column name="dept_id"/>
+            </basic>
+            <basic name="deptName">
+                <column name="dept_name"/>
+            </basic>
+            <basic name="creator">
+                <column name="CREATOR"/>
+            </basic>
+            <basic name="createTime">
+                <column name="CREATE_TIME"/>
+            </basic>
+            <basic name="updater">
+                <column name="UPDATER"/>
+            </basic>
+            <basic name="updateTime">
+                <column name="UPDATE_TIME"/>
+            </basic>
+            <basic name="updateType">
+                <column name="UPDATE_TYPE"/>
+            </basic>
+            <basic name="frontChargeDiscount">
+                <column name="FRONT_CHARGE_DISCOUNT"/>
+            </basic>
+            <basic name="monthMRate">
+                <column name="MONTH_M_RATE"/>
+            </basic>
+            <basic name="handleChargeRate">
+                <column name="HANDLE_CHARGE_RATE"/>
+            </basic>
+            <basic name="loanTimes">
+                <column name="LOAN_TIMES"/>
+            </basic>
+            <basic name="pawn">
+                <column name="PAWN"/>
+            </basic>
+            <basic name="handleCharge">
+                <column name="HANDLE_CHARGE"/>
+            </basic>
+            <basic name="monthChargeDiscount">
+                <column name="MONTH_CHARGE_DISCOUNT"/>
+            </basic>
+            <basic name="guaranteeFee">
+                <column name="GUARANTEE_FEE"/>
+            </basic>
+            <basic name="guaranteeCompany">
+                <column name="GUARANTEE_COMPANY"/>
+            </basic>
+            <basic name="trustInstitution">
+                <column name="Trust_Institution"/>
+            </basic>
+            <basic name="trustProducts">
+                <column name="Trust_Products"/>
+            </basic>
+            <basic name="trustPlan">
+                <column name="Trust_Plan"/>
+            </basic>
+            <basic name="typeContractChange">
+                <column name="Type_Contract_Change"/>
+            </basic>
+            <basic name="amountContractChange">
+                <column name="Amount_Contract_Change"/>
+            </basic>
+            <basic name="loanTime">
+                <column name="Loan_Time"/>
+            </basic>
+            <basic name="def7">
+                <column name="def7"/>
+            </basic>
+            <basic name="def8">
+                <column name="def8"/>
+            </basic>
+            <basic name="def9">
+                <column name="def9"/>
+            </basic>
+            <basic name="def10">
+                <column name="def10"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

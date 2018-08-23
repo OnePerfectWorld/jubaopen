@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.atguigu.jubaopen.bean.NplmLoanContract">
+        <table name="NPLM_loan_contract" schema="jubaopen" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="ID"/>
+            </id>
+            <basic name="loanContractNum">
+                <column name="LOAN_CONTRACT_NUM"/>
+            </basic>
+            <basic name="borrowerId">
+                <column name="borrower_id"/>
+            </basic>
+            <basic name="ecifId">
+                <column name="ECIF_ID"/>
+            </basic>
+            <basic name="proCategoryCode">
+                <column name="pro_CATEGORY_CODE"/>
+            </basic>
+            <basic name="proCategoryName">
+                <column name="pro_CATEGORY_NAME"/>
+            </basic>
+            <basic name="productInfoId">
+                <column name="PRODUCT_INFO_ID"/>
+            </basic>
+            <basic name="loanInstalments">
+                <column name="LOAN_INSTALMENTS"/>
+            </basic>
+            <basic name="loanInstalmentUnit">
+                <column name="LOAN_INSTALMENT_UNIT"/>
+            </basic>
+            <basic name="loanAmount">
+                <column name="LOAN_AMOUNT"/>
+            </basic>
+            <basic name="preFee">
+                <column name="PRE_FEE"/>
+            </basic>
+            <basic name="putAmount">
+                <column name="PUT_AMOUNT"/>
+            </basic>
+            <basic name="creditType">
+                <column name="CREDIT_TYPE"/>
+            </basic>
+            <basic name="payMod">
+                <column name="PAY_MOD"/>
+            </basic>
+            <basic name="repayWay">
+                <column name="REPAY_WAY"/>
+            </basic>
+            <basic name="loanType">
+                <column name="LOAN_TYPE"/>
+            </basic>
+            <basic name="saleDepartmentId">
+                <column name="SALE_DEPARTMENT_ID"/>
+            </basic>
+            <basic name="repayAccountName">
+                <column name="REPAY_ACCOUNT_NAME"/>
+            </basic>
+            <basic name="repayAcctIdenType">
+                <column name="REPAY_ACCT_IDEN_TYPE"/>
+            </basic>
+            <basic name="repayAcctIdenNum">
+                <column name="REPAY_ACCT_IDEN_NUM"/>
+            </basic>
+            <basic name="repayAccount">
+                <column name="REPAY_ACCOUNT"/>
+            </basic>
+            <basic name="repayAccountType">
+                <column name="REPAY_ACCOUNT_TYPE"/>
+            </basic>
+            <basic name="repayAccountBankid">
+                <column name="REPAY_ACCOUNT_BANKID"/>
+            </basic>
+            <basic name="repayActBranchNo">
+                <column name="REPAY_ACT_BRANCH_NO"/>
+            </basic>
+            <basic name="repayAccountBankName">
+                <column name="REPAY_ACCOUNT_BANK_NAME"/>
+            </basic>
+            <basic name="publicPrivate">
+                <column name="PUBLIC_PRIVATE"/>
+            </basic>
+            <basic name="repayActProvince">
+                <column name="REPAY_ACT_PROVINCE"/>
+            </basic>
+            <basic name="repayAccountCity">
+                <column name="REPAY_ACCOUNT_CITY"/>
+            </basic>
+            <basic name="posStatus">
+                <column name="POS_STATUS"/>
+            </basic>
+            <basic name="startDate">
+                <column name="START_DATE"/>
+            </basic>
+            <basic name="endDate">
+                <column name="END_DATE"/>
+            </basic>
+            <basic name="contractSource">
+                <column name="CONTRACT_SOURCE"/>
+            </basic>
+            <basic name="repayBalance">
+                <column name="REPAY_BALANCE"/>
+            </basic>
+            <basic name="contractType">
+                <column name="CONTRACT_TYPE"/>
+            </basic>
+            <basic name="creator">
+                <column name="CREATOR"/>
+            </basic>
+            <basic name="updater">
+                <column name="UPDATER"/>
+            </basic>
+            <basic name="createTime">
+                <column name="CREATE_TIME"/>
+            </basic>
+            <basic name="updateTime">
+                <column name="UPDATE_TIME"/>
+            </basic>
+            <basic name="remark">
+                <column name="REMARK"/>
+            </basic>
+            <basic name="cycleCreditId">
+                <column name="CYCLE_CREDIT_ID"/>
+            </basic>
+            <basic name="updateType">
+                <column name="UPDATE_TYPE"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

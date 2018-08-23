@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.atguigu.jubaopen.bean.TrustPlanInfo">
+        <table name="trust_plan_info" schema="jubaopen" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="trustPlanName">
+                <column name="trust_plan_name"/>
+            </basic>
+            <basic name="trustPlanCode">
+                <column name="trust_plan_code"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

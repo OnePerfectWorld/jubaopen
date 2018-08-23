@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.atguigu.jubaopen.bean.NplmOverdueContract">
+        <table name="NPLM_OVERDUE_CONTRACT" schema="jubaopen" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+            </id>
+            <basic name="loanContractNum">
+                <column name="LOAN_CONTRACT_NUM"/>
+            </basic>
+            <basic name="overdueStatus">
+                <column name="OVERDUE_STATUS"/>
+            </basic>
+            <basic name="overdueDays">
+                <column name="OVERDUE_DAYS"/>
+            </basic>
+            <basic name="instalmentCnt">
+                <column name="INSTALMENT_CNT"/>
+            </basic>
+            <basic name="allDays">
+                <column name="ALL_DAYS"/>
+            </basic>
+            <basic name="allInstalmentCnt">
+                <column name="ALL_INSTALMENT_CNT"/>
+            </basic>
+            <basic name="allNumber">
+                <column name="ALL_NUMBER"/>
+            </basic>
+            <basic name="principalInterest">
+                <column name="PRINCIPAL_INTEREST"/>
+            </basic>
+            <basic name="allForfeit">
+                <column name="ALL_FORFEIT"/>
+            </basic>
+            <basic name="allAmerce">
+                <column name="ALL_AMERCE"/>
+            </basic>
+            <basic name="allShould">
+                <column name="ALL_SHOULD"/>
+            </basic>
+            <basic name="allIndeed">
+                <column name="ALL_INDEED"/>
+            </basic>
+            <basic name="currentRepay">
+                <column name="CURRENT_REPAY"/>
+            </basic>
+            <basic name="allRepaymentAmount">
+                <column name="ALL_REPAYMENT_AMOUNT"/>
+            </basic>
+            <basic name="firstDate">
+                <column name="FIRST_DATE"/>
+            </basic>
+            <basic name="startDate">
+                <column name="START_DATE"/>
+            </basic>
+            <basic name="serialStartDate">
+                <column name="SERIAL_START_DATE"/>
+            </basic>
+            <basic name="overdueHistory">
+                <column name="OVERDUE_HISTORY"/>
+            </basic>
+            <basic name="computeDate">
+                <column name="COMPUTE_DATE"/>
+            </basic>
+            <basic name="creator">
+                <column name="CREATOR"/>
+            </basic>
+            <basic name="createTime">
+                <column name="CREATE_TIME"/>
+            </basic>
+            <basic name="updater">
+                <column name="UPDATER"/>
+            </basic>
+            <basic name="updateTime">
+                <column name="UPDATE_TIME"/>
+            </basic>
+            <basic name="updateType">
+                <column name="UPDATE_TYPE"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/jubaopen.iml" filepath="$PROJECT_DIR$/.idea/jubaopen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jubaopen-bean/jubaopen-bean.iml" filepath="$PROJECT_DIR$/jubaopen-bean/jubaopen-bean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jubaopen-common-util/jubaopen-common-util.iml" filepath="$PROJECT_DIR$/jubaopen-common-util/jubaopen-common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jubaopen-interface/jubaopen-interface.iml" filepath="$PROJECT_DIR$/jubaopen-interface/jubaopen-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jubaopen-manage-service/jubaopen-manage-service.iml" filepath="$PROJECT_DIR$/jubaopen-manage-service/jubaopen-manage-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jubaopen-manage-web/jubaopen-manage-web.iml" filepath="$PROJECT_DIR$/jubaopen-manage-web/jubaopen-manage-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jubaopen-parent/jubaopen-parent.iml" filepath="$PROJECT_DIR$/jubaopen-parent/jubaopen-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jubaopen-service-util/jubaopen-service-util.iml" filepath="$PROJECT_DIR$/jubaopen-service-util/jubaopen-service-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jubaopen-web-util/jubaopen-web-util.iml" filepath="$PROJECT_DIR$/jubaopen-web-util/jubaopen-web-util.iml" />
+    </modules>
+  </component>
+</project>

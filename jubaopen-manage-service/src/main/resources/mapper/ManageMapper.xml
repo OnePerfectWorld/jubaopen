@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.jubaopen.manage.mapper.ManageMapper">
+
+    <!-- List<ContractResult> getAll(@Param("params")Map<String,Object> params);-->
+    <select id="getAll" resultType="com.atguigu.jubaopen.bean.ContractResult"  >
+       SELECT
+        nlc.ID,
+        nlc.borrower_id,
+        nlc.LOAN_CONTRACT_NUM,
+        nlc.CONTRACT_TYPE,
+        nbi.CLIENT_NAME,
+        nbi.IDENTITY_TYPE,
+        nbi.IDENTITY_NUM,
+        nlc.CREDIT_TYPE,
+        npa.business_type,
+        npa.Trust_Institution,
+        npa.Trust_Products,
+        npa.Trust_Plan,
+        npa.city,
+        npa.dept_name,
+        npa.is_expedited,
+        npa.sign_type,
+        npa.sign_date,
+        npa.Type_Contract_Change,
+        npa.Amount_Contract_Change,
+        nlc.LOAN_INSTALMENTS,
+        npa.is_recycle_load,
+        npa.recycle_loan_cnt,
+        nlc.START_DATE,
+        nlc.END_DATE,
+        npa.settle_date,
+        nlc.LOAN_AMOUNT,
+        nlc.REPAY_ACCOUNT_BANK_NAME,
+        nlc.REPAY_ACCOUNT,
+        nlc.PRE_FEE,
+        nlc.LOAN_TYPE,
+        npa.Loan_Time,
+        nlc.PUT_AMOUNT
+      FROM
+	    NPLM_loan_contract AS nlc
+      INNER JOIN nplm_contract_attribute AS npa ON nlc.LOAN_CONTRACT_NUM = npa.LOAN_CONTRACT_NUM
+      INNER JOIN nplm_borrower_info AS nbi ON nlc.borrower_id = nbi.id
+
+      <where>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(loanContractNum)">
+              and nlc.LOAN_CONTRACT_NUM = #{loanContractNum}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(clientName)">
+              and nbi.CLIENT_NAME=#{clientName}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(identityNum)">
+              and nbi.IDENTITY_NUM=#{identityNum}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(city)">
+              and nbi.city=#{city}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(deptName)">
+              and npa.dept_name=#{deptName}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(signDateStart)">
+              and npa.sign_date >=#{signDateStart}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(signDateEnd)">
+              and  npa.sign_date &lt;= #{signDateEnd})
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(repaymentDateStart)">
+              and npa.Loan_Time >= {repaymentDateStart}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(repaymentDateEnd)">
+              and npa.Loan_Time &lt;= #{repaymentDateStart}
+          </if>
+
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(contractType)">
+              and nlc.CONTRACT_TYPE=#{contractType}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(businessType)">
+              and npa.business_type=#{businessType}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(trustInstitution)">
+              and npa.Trust_Institution=#{trustInstitution}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(trustProducts)">
+              and npa.Trust_Products=#{trustProducts}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(trustPlan)">
+              and npa.Trust_Plan=#{trustPlan}
+          </if>
+          <if test="@com.atguigu.jubaopen.common.utils.Util@isNotEmpty(typeContractChange)">
+              and npa.Type_Contract_Change=#{typeContractChange}
+          </if>
+
+      </where>
+        LIMIT #{from},#{pagesize}
+    </select>
+
+
+    <!-- int getTotalPage();-->
+    <select id="getTotalPage" resultType="int" >
+        SELECT   COUNT(a.LOAN_CONTRACT_NUM) FROM
+        (SELECT
+            nlc.ID,
+            nlc.borrower_id,
+            nlc.LOAN_CONTRACT_NUM,
+            nlc.CONTRACT_TYPE,
+            nbi.CLIENT_NAME,
+            nbi.IDENTITY_TYPE,
+            nbi.IDENTITY_NUM,
+            nlc.CREDIT_TYPE,
+            npa.business_type,
+            npa.Trust_Institution,
+            npa.Trust_Products,
+            npa.Trust_Plan,
+            npa.city,
+            npa.dept_name,
+            npa.is_expedited,
+            npa.sign_type,
+            npa.sign_date,
+            npa.Type_Contract_Change,
+            npa.Amount_Contract_Change,
+            nlc.LOAN_INSTALMENTS,
+            npa.is_recycle_load,
+            npa.recycle_loan_cnt,
+            nlc.START_DATE,
+            nlc.END_DATE,
+            npa.settle_date,
+            nlc.LOAN_AMOUNT,
+            nlc.REPAY_ACCOUNT_BANK_NAME,
+            nlc.REPAY_ACCOUNT,
+            nlc.PRE_FEE,
+            nlc.LOAN_TYPE,
+            npa.Loan_Time,
+            nlc.PUT_AMOUNT
+        FROM
+            NPLM_loan_contract AS nlc
+        INNER JOIN nplm_contract_attribute AS npa ON nlc.LOAN_CONTRACT_NUM = npa.LOAN_CONTRACT_NUM
+        INNER JOIN nplm_borrower_info AS nbi ON nlc.borrower_id = nbi.id)AS a
+    </select>
+
+
+
+
+
+
+</mapper>

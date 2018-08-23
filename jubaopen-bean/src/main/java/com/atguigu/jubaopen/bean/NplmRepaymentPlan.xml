@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.atguigu.jubaopen.bean.NplmRepaymentPlan">
+        <table name="NPLM_repayment_plan" schema="jubaopen" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="ID"/>
+            </id>
+            <basic name="loanContractNum">
+                <column name="LOAN_CONTRACT_NUM"/>
+            </basic>
+            <basic name="instalment">
+                <column name="INSTALMENT"/>
+            </basic>
+            <basic name="preRepaymentDate">
+                <column name="PRE_REPAYMENT_DATE"/>
+            </basic>
+            <basic name="repaymentDate">
+                <column name="REPAYMENT_DATE"/>
+            </basic>
+            <basic name="capital">
+                <column name="CAPITAL"/>
+            </basic>
+            <basic name="interest">
+                <column name="INTEREST"/>
+            </basic>
+            <basic name="installmentFee">
+                <column name="INSTALLMENT_FEE"/>
+            </basic>
+            <basic name="amerce">
+                <column name="AMERCE"/>
+            </basic>
+            <basic name="forfeit">
+                <column name="FORFEIT"/>
+            </basic>
+            <basic name="penalty">
+                <column name="PENALTY"/>
+            </basic>
+            <basic name="changeFee">
+                <column name="change_fee"/>
+            </basic>
+            <basic name="otherFee">
+                <column name="OTHER_FEE"/>
+            </basic>
+            <basic name="repaymentAmount">
+                <column name="REPAYMENT_AMOUNT"/>
+            </basic>
+            <basic name="indeedCapital">
+                <column name="INDEED_CAPITAL"/>
+            </basic>
+            <basic name="indeedInterest">
+                <column name="INDEED_INTEREST"/>
+            </basic>
+            <basic name="indeedInstFee">
+                <column name="INDEED_INST_FEE"/>
+            </basic>
+            <basic name="indeedAmerce">
+                <column name="INDEED_AMERCE"/>
+            </basic>
+            <basic name="indeedForfeit">
+                <column name="INDEED_FORFEIT"/>
+            </basic>
+            <basic name="indeedPenalty">
+                <column name="indeed_penalty"/>
+            </basic>
+            <basic name="indeedChangeFee">
+                <column name="indeed_change_fee"/>
+            </basic>
+            <basic name="indeedOtherFee">
+                <column name="indeed_OTHER_FEE"/>
+            </basic>
+            <basic name="indeedAmount">
+                <column name="INDEED_AMOUNT"/>
+            </basic>
+            <basic name="reduceCapital">
+                <column name="reduce_CAPITAL"/>
+            </basic>
+            <basic name="reduceInterest">
+                <column name="reduce_INTEREST"/>
+            </basic>
+            <basic name="reduceAmerce">
+                <column name="reduce_AMERCE"/>
+            </basic>
+            <basic name="reduceForfeit">
+                <column name="reduce_FORFEIT"/>
+            </basic>
+            <basic name="reduceInstFee">
+                <column name="reduce_INST_FEE"/>
+            </basic>
+            <basic name="reducePenalty">
+                <column name="reduce_penalty"/>
+            </basic>
+            <basic name="reducePreFee">
+                <column name="reduce_PRE_FEE"/>
+            </basic>
+            <basic name="reduceOtherFee">
+                <column name="reduce_OTHER_FEE"/>
+            </basic>
+            <basic name="remainCapital">
+                <column name="REMAIN_CAPITAL"/>
+            </basic>
+            <basic name="npvRemainCapital">
+                <column name="NPV_remain_capital"/>
+            </basic>
+            <basic name="allRepaymentAmount">
+                <column name="ALL_REPAYMENT_AMOUNT"/>
+            </basic>
+            <basic name="repaymentState">
+                <column name="REPAYMENT_STATE"/>
+            </basic>
+            <basic name="remark">
+                <column name="REMARK"/>
+            </basic>
+            <basic name="creator">
+                <column name="CREATOR"/>
+            </basic>
+            <basic name="createTime">
+                <column name="CREATE_TIME"/>
+            </basic>
+            <basic name="updater">
+                <column name="UPDATER"/>
+            </basic>
+            <basic name="updateTime">
+                <column name="UPDATE_TIME"/>
+            </basic>
+            <basic name="isOperating">
+                <column name="IS_OPERATING"/>
+            </basic>
+            <basic name="updateType">
+                <column name="UPDATE_TYPE"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

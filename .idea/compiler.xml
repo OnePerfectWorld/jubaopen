@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jubaopen-bean" />
+        <module name="jubaopen-common-util" />
+        <module name="jubaopen-interface" />
+        <module name="jubaopen-manage-service" />
+        <module name="jubaopen-manage-web" />
+        <module name="jubaopen-service-util" />
+        <module name="jubaopen-web-util" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jubaopen-bean" target="1.8" />
+      <module name="jubaopen-common-util" target="1.8" />
+      <module name="jubaopen-interface" target="1.8" />
+      <module name="jubaopen-manage-service" target="1.8" />
+      <module name="jubaopen-manage-web" target="1.8" />
+      <module name="jubaopen-parent" target="1.8" />
+      <module name="jubaopen-service-util" target="1.8" />
+      <module name="jubaopen-web-util" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
